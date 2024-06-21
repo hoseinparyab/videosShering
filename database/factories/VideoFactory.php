@@ -13,15 +13,14 @@ class VideoFactory extends Factory
      */
     public function definition()
     {
-       $persianfaker = \Faker\Factory::create('fa_IR');
+        $persianfaker = \Faker\Factory::create('fa_IR');                                      
         return [
             'name'=> $persianfaker->name(),
             'url'=> $this->faker->imageUrl(446, 240, 'animals', true),
             'length'=> $this->faker->randomNumber(3),
             'slug'=> $this->faker->slug(),
             'description'=> $persianfaker->realText(),
-
-
+            'thumbnail' =>'https://loremflickr.com/446/240/world?random='. rand(1,99)
 
         ];
     }
