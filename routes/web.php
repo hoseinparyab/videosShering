@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 */
-Route::get('/',[IndexController::class,'index']);
-
-Route::get('/upload',function(){
-    return view('videos.create');
-});
+Route::get('/',[IndexController::class,'index'])->name('index');
+Route::get('/videos/create',[VideoController::class,'create'])->name('videos.create');
+Route::post('/videos',[VideoController::class,'store'])->name('videos.store');
