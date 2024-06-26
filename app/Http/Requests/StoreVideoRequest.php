@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreVideoRequest extends FormRequest
@@ -26,10 +26,17 @@ class StoreVideoRequest extends FormRequest
         return [
             'name' => ['required'],
             'length' => ['required', 'integer'],
-            'slug' => ['required','unique:videos,slug'],
+            'slug' => ['required','unique:videos,slug','alpha_dash'],
             'url' => ['required','url'],
             'thumbnail' => ['required','url'],
             
         ];
+        
     }
+    protected function prepareForValidation()
+{
+    $this->merge([
+        'slug' => Str::slug($this->slug),
+    ]);
+}
 }
