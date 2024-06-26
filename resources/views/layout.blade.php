@@ -64,8 +64,7 @@
                     <div class="dropdown">
                         <a data-toggle="dropdown" href="#" class="user-area">
                             <div class="thumb"><img
-                                    src="https://s.gravatar.com/avatar/dfca86228f1ed5f0554827a8d907172a?s=80"
-                                    alt="">
+                                    src="https://s.gravatar.com/avatar/dfca86228f1ed5f0554827a8d907172a?s=80" alt="">
                             </div>
                             <h2>حسین پاریاب </h2>
                             <h3>25 اشتراک</h3>
@@ -99,14 +98,9 @@
     </div><!-- // main-category -->
 
     <div class="site-output">
-        @if (session('alert'))
-            <div class="alert alert-success">
-                {{ session('alert') }}
-            </div>
-        @endif
         <div id="all-output" class="col-md-12">
             <div class="row">
-                @yield('content')
+              {{$content?? `` }}
             </div>
         </div><!-- // row -->
     </div>
