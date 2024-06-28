@@ -10,12 +10,12 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
 mix.styles([
     'resources/css/bootstrap.min.css',
     'resources/css/style.css',
     'resources/css/responsive.css'
 ], 'public/css/main.css');
+
 
 mix.js([
     'resources/js/app.js',
@@ -24,5 +24,7 @@ mix.js([
     'resources/js/bootstrap.min.js',
     'resources/js/imagesloaded.pkgd.min.js',
     'resources/js/grid-blog.min.js'
-],'public/js/main.js' );
+], 'public/js/main.js')
 
+mix.copyDirectory('resources/css/fonts','public/css/fonts')
+mix.copyDirectory('resources/img','public/img')

@@ -961,7 +961,8 @@ h1.new-video-title .fa{
 	color: #333333;
 	line-height: 19px;
 	text-decoration: none;
-	display: block;
+	display: inline;
+
 	}
 .video-item a.channel-name{
 	display: block;

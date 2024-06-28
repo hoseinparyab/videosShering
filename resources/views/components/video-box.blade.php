@@ -2,11 +2,14 @@
     <div class="video-item">
         <div class="thumb">
             <div class="hover-efect"></div>
-            <small class="time">{{ $video->length }}</small>
-            <a href="{{ route('videos.show',$video->id ) }}"><img src="{{ $video->thumbnail }}" alt=""></a>
+            <small class="time">{{ $video->LengthInHuman }}</small>
+            <a href="{{ route('videos.show',$video->slug ) }}"><img src="{{ $video->thumbnail }}" alt=""></a>
         </div>
         <div class="video-info">
-            <a href="{{ route('videos.show',$video->id ) }}" class="title">{{ $video->name }}</a>
+            <a href="{{ route('videos.show',$video->slug ) }}" class="title">{{ $video->name }}</a>
+            <a href="{{ route('video.edit' , $video->slug )}}">
+                <i class="fa fa-pencil "arial-hidden ="true" ></i>
+            </a>
             <a class="channel-name" href="#">حسین پاریاب <span>
                     <i class="fa fa-check-circle"></i></span></a>
             <span class="views"><i class="fa fa-eye"></i>2.8M بازدید </span>
