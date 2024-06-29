@@ -18,6 +18,15 @@
                             <input type="text" name="length" class="form-control" value="{{ old("length") }}" placeholder="@lang('videos.length')">
                         </div>
                         <div class="col-md-6">
+                            <label>@lang('videos.category')</label>
+                            <select class="form-control" name="category_id" id="category">
+                                @foreach ($categories as $category )
+                                <option value="{{ $category->id }}">{{ $category->name }} </option>
+                            @endforeach
+
+                            </select>
+                        </div>
+                        <div class="col-md-6">
                             <label>@lang('videos.slug')</label>
                             <input type="text" name="slug" class="form-control" value="{{ old("slug") }}" placeholder="@lang('videos.slug')">
                         </div>

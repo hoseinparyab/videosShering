@@ -26,17 +26,15 @@ class StoreVideoRequest extends FormRequest
         return [
             'name' => ['required'],
             'length' => ['required', 'integer'],
-            'slug' => ['required','unique:videos,slug','alpha_dash'],
-            'url' => ['required','url'],
-            'thumbnail' => ['required','url'],
-            
+            'slug' => ['required', 'unique:videos,slug', 'alpha_dash'],
+            'url' => ['required', 'url'],
+            'thumbnail' => ['required', 'url'],
         ];
-        
     }
     protected function prepareForValidation()
-{
-    $this->merge([
-        'slug' => Str::slug($this->slug),
-    ]);
-}
+    {
+        $this->merge([
+            'slug' => Str::slug($this->slug),
+        ]);
+    }
 }

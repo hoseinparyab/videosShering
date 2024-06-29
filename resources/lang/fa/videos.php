@@ -6,5 +6,6 @@ return [
     'thumbnail'=> 'تصویر بند انگشتی ',
     'description' => 'توضیحات',
     'submit' => 'ذخیره',
-    'slug' => 'نام یکتا'
+    'slug' => 'نام یکتا',
+    'category' => 'دسته بندی ',
 ];

@@ -14,7 +14,7 @@ class Video extends Model
       return 'slug' ;
       }
     protected $fillable =[
-     'name', 'url' , 'thumbnail','slug', 'length'
+     'name', 'url' , 'thumbnail','slug', 'length','category_id'
     ];
     public function getLengthInHumanAttribute()
     {
@@ -28,5 +28,8 @@ class Video extends Model
    public function relatedVideos( int $count =6 )
    {
      return Video::all()->random($count);
+   }
+   public function category(){
+    return $this->belongsTo(category::class);
    }
 }
