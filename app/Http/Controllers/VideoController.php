@@ -24,12 +24,13 @@ class VideoController extends Controller
         return redirect()->route('index')->with('alert',__('messages.success'));
 
     }
-    public function show(Request $request,Video $video){
+     public function show(Request $request,Video $video){
        return view('videos.show',compact('video'));
        
     }
     public function edit(Video $video){
-        return view('videos.edit',compact('video'));
+        $categories = Category::all();
+        return view('videos.edit',compact('video','categories'));
     }
     public function update(Request $request ,Video $video){
 

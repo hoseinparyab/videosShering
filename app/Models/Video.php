@@ -32,4 +32,7 @@ class Video extends Model
    public function category(){
     return $this->belongsTo(category::class);
    }
+   public function getCategoryNameAttribute(){
+    return $this->category ? $this->category->name : null;
+}
 }

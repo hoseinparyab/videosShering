@@ -9,8 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function video()
+    public function videos()
     {
-        return $this ->hasMany(Video::class);
+        return $this->hasMany(Video::class);
     }
 }
