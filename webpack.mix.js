@@ -26,5 +26,5 @@ mix.js([
     'resources/js/grid-blog.min.js'
 ], 'public/js/main.js')
 
-mix.copyDirectory('resources/css/fonts','public/css/fonts')
-mix.copyDirectory('resources/img','public/img')
+mix.copyDirectory('resources/css/fonts', 'public/css/fonts')
+mix.copyDirectory('resources/img', 'public/img')

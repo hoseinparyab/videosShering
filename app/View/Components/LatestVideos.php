@@ -15,7 +15,7 @@ class LatestVideos extends Component
      */
     public function __construct()
     {
-      $this->videos = Video::latest()->take(6)->get();
+        $this->videos = Video::latest()->take(6)->get();
     }
 
     /**

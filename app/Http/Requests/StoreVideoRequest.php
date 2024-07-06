@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -29,7 +30,7 @@ class StoreVideoRequest extends FormRequest
             'slug' => ['required', 'unique:videos,slug', 'alpha_dash'],
             'url' => ['required', 'url'],
             'thumbnail' => ['required', 'url'],
-            'category_id'=> ['required','exists:categories,id']
+            'category_id' => ['required', 'exists:categories,id']
         ];
     }
     protected function prepareForValidation()

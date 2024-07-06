@@ -2,10 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VideoFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Video::class;
+
     /**
      * Define the model's default state.
      *
@@ -13,15 +22,15 @@ class VideoFactory extends Factory
      */
     public function definition()
     {
-        $persianfaker = \Faker\Factory::create('fa_IR');                                      
-        return [
-            'name'=> $persianfaker->name(),
-            'url'=> $this->faker->imageUrl(446, 240, 'animals', true),
-            'length'=> $this->faker->randomNumber(3),
-            'slug'=> $this->faker->slug(),
-            'description'=> $persianfaker->realText(),
-            'thumbnail' =>'https://loremflickr.com/446/240/world?random='. rand(1,99)
 
+        return [
+            'name' => $this->faker->name(),
+            'url' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1920_18MG.mp4',
+            'length' => $this->faker->randomNumber(3),
+            'slug' => $this->faker->slug(),
+            'description' => $this->faker->realText(),
+            'thumbnail' => 'https://loremflickr.com/446/240/world?random=' . rand(1, 99),
+            'category_id' => Category::first() ?? Category::factory()
         ];
     }
 }
