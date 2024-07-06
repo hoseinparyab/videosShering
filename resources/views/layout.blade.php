@@ -66,7 +66,7 @@
                             <div class="thumb"><img
                                     src="https://s.gravatar.com/avatar/dfca86228f1ed5f0554827a8d907172a?s=80" alt="">
                             </div>
-                            <h2>مهرداد </h2>
+                            <h2>حسین </h2>
                             <h3>25 اشتراک</h3>
                             <i class="fa fa-angle-down"></i>
                         </a>
