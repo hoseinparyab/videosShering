@@ -1,0 +1,113 @@
+@charset "utf-8";
+@media screen and (max-width: 1950px) {
+/******************/
+}
+@media screen and (max-width: 1400px) {
+/******************/
+}
+@media screen and (max-width: 1300px) {
+}
+@media screen and (max-width: 1050px) {
+}
+@media screen and (max-width: 780px) {
+	body:after{
+		display:none
+	}
+	#main-category{
+		padding-top: 10px;
+		padding-bottom: 10px;
+		display:none
+	}
+header ul.top-menu li a{
+	padding-right: 15px;
+}
+#category-cover-image h1.title{
+	position: relative;
+	background-color: #f8f8f8;
+	margin: 0px;
+	padding: 20px;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	color: #333;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #D6D6D6;
+}
+
+#category-cover-image  ul.category-info{
+	position: relative;
+	margin: 0px;
+	right: auto;
+	bottom: auto;
+	z-index: 2;
+	background-color: #FFF;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#category-cover-image  ul.category-info li{
+	color: #666;
+}
+#category #top-channels ul.channels li{
+	margin-bottom: 10px;
+	margin-right:10px;
+	display:inline-block
+}
+
+}
+@media screen and (max-width: 480px) {
+#main-category{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display:none
+}
+#main-category ul.main-category-menu li {
+	display: block;
+	position: relative;
+}
+#main-category ul.main-category-menu li a{
+	font-family: 'IRANSansWeb', sans-serif;
+	color: #444444;
+	font-weight: 700;
+	font-size: 12px;
+	display: block;
+	text-transform: uppercase;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #E6E6E6;
+	margin: 0px;
+}
+#main-category ul.main-category-menu > li > ul{
+	display: block;
+	opacity: 1;
+	visibility:visible;
+	position: relative;
+	padding: 0px;
+	top: 0px;
+	margin: 0px;
+	transform: translateY(0%);
+	-webkit-transform: translateY(0%);
+	-moz-transform: translateY(0%);
+	-o-transform: translateY(0%);
+	-ms-transform: translateY(0%);
+	width: 100%;
+	}
+.error-page h1.error-no{
+	text-align:center;
+	font-family: 'IRANSansWeb', sans-serif;
+	font-size: 100px;
+	font-weight: 900;
+	color: #ff5e3a;
+	}
+.error-page p.error-text{
+	padding-top: 10px;
+	text-align:center
+	}
+}
+@media screen and (max-width: 375px) {
+}
+@media screen and (max-width: 260px) {
+}

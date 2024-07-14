@@ -60,13 +60,14 @@
                 <div class="col-lg-2 col-md-2 col-sm-4 hidden-xs hidden-sm">
                     <!--  -->
                 </div>
+                @auth
                 <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs hidden-sm">
                     <div class="dropdown">
                         <a data-toggle="dropdown" href="#" class="user-area">
                             <div class="thumb"><img
-                                    src="https://s.gravatar.com/avatar/dfca86228f1ed5f0554827a8d907172a?s=80" alt="">
+                                    src="{{auth()->user()->gravatar }}" alt="">
                             </div>
-                            <h2>حسین </h2>
+                            <h2>{{{auth()->user()->name}}}</h2>
                             <h3>25 اشتراک</h3>
                             <i class="fa fa-angle-down"></i>
                         </a>
@@ -74,10 +75,17 @@
                             <li><a href="#"><i class="fa fa-edit color-1"></i>ویرایش پروفایل</a></li>
                             <li><a href="#"><i class="fa fa-video-camera color-2"></i>اضافه کردن فیلم</a></li>
                             <li><a href="#"><i class="fa fa-star color-3"></i>برگزیده</a></li>
-                            <li><a href="#"><i class="fa fa-sign-out color-4"></i>خروج</a></li>
+                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out color-4"></i>خروج</a></li>
                         </ul>
                     </div>
                 </div>
+                @endauth
+                @guest
+                  <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs hidden-sm">
+                    <a href="{{ route('login.create') }} " class=" btn btn-danger">ورود</a>
+                    <a href="{{ route('register.create') }} " class=" btn btn-danger">ثبت نام</a>
+                 </div>
+                @endguest
             </div><!-- // row -->
         </div><!-- // container-full -->
     </header><!-- // header -->

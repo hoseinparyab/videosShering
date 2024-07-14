@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use PharIo\Manifest\Email;
 
 class User extends Authenticatable
 {
@@ -40,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function getGravatarAttribute()
+    {
+        $hash = md5(strtolower($this->attributes['email']));
+        return "http://s.gravatar.com/avatar/$hash";
+    }
+
 }
+

@@ -142,11 +142,6 @@ return [
         'slug' => 'نام یکتا',
         'url' => 'آدرس ویدیو',
         'thumbnail' => 'تصویر بندانگشتی',
-        'password' => [
-            'current_password' => 'رمز عبور کنونی',
-            'password' => 'رمز عبور',
-            'password_confirmation' => 'تایید رمز عبور'
-        ],
         'is_special_offer' => 'پیشنهاد ویژه',
         "user" => [
 
