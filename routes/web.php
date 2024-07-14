@@ -27,6 +27,8 @@ Route::post('/videos/{video}', [VideoController::class, 'update'])->name('videos
 
 Route::get('/categories/{category:slug}/videos', [CategoryVideoController::class, 'index'])->name('categories.videos.index');
 
-Route::get("/harchi", function(){
-    dd(config('app.test'));
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';

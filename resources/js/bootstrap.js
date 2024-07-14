@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 window._ = require('lodash');
 window.$ = window.jQuery = require('jquery')
 
