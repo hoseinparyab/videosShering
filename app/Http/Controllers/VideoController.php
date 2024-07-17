@@ -25,7 +25,11 @@ class VideoController extends Controller
 
     public function store(StoreVideoRequest $request)
     {
+<<<<<<< Updated upstream
         Video::create($request->all());
+=======
+        $request->user()->videos()->create($request->all());
+>>>>>>> Stashed changes
         return redirect()->route('index')->with('alert', __('messages.success'));
     }
 
