@@ -1,10 +1,15 @@
 <?php
 
 use App\Models\Video;
+use App\Mail\VerfiyEmail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CategoryVideoController;
+use App\Models\User;
+use Illuminate\Support\Facades\URL;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +37,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+Route::get('/verify/{id}',function(){
+    dd(request()->hasValidSignature());
+    echo 'Verify';
+})-> name('verify');
+
+Route::get('/generate',function(){
+
+    echo URL::temporarySignedRoute('verify',now()->addSeconds(20),['id'=>5]);
+});

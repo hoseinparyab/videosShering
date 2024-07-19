@@ -48,12 +48,7 @@ class User extends Authenticatable
     }
     public function videos()
     {
-<<<<<<< Updated upstream
         return $this->hasMany(Video::class);
-=======
-        return $this ->belongsTo(Video::class);
-
->>>>>>> Stashed changes
     }
 
 }

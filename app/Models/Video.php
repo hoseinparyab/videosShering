@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\User;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -44,9 +44,8 @@ class Video extends Model
     {
         return $this->category?->name;
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
+
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -58,11 +57,4 @@ class Video extends Model
     {
         return $this->user?->gravatar;
     }
-
->>>>>>> Stashed changes
-=======
-        public function user(){
-        return $this->belongsTo(User::class);
-    }
->>>>>>> Stashed changes
 }
