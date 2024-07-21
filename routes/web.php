@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CategoryVideoController;
+use App\Http\Middleware\CheckVerifyEmail;
 use App\Jobs\Otp;
 use App\Jobs\ProcessVideo;
 use App\Notifications\InvoicePaid;
 
 use App\Models\User;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\URL;
 
 
@@ -30,7 +32,7 @@ use Illuminate\Support\Facades\URL;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/videos/create', [VideoController::class, 'create'])->name('videos.create');
+Route::get('/videos/create', [VideoController::class, 'create'])->Middleware('emailVerify')->name('videos.create');
 Route::post('/videos', [VideoController::class, 'store'])->name('videos.store');
 Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
 Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])->name('videos.edit');
@@ -49,10 +51,4 @@ Route::get('/email',function(){
     Mail::to('hoseinparyab1@gmail.com')->send(new VerfiyEmail());
 
 });
-Route::get('/notify',function(){
-    $user = User::first();
-    $video = Video::first();
-    $user->notify(new VideoProcess($video));
-});
-
 
