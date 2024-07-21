@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Video extends Model
 {
     use HasFactory;
-    protected $perPage = 18;
+    protected $perPage = 10;
 
     protected $fillable = [
         'name', 'description', 'length', 'url', 'slug', 'thumbnail', 'category_id'

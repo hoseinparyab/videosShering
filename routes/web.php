@@ -1,12 +1,18 @@
 <?php
 
+use App\Events\VideoCreated;
 use App\Models\Video;
 use App\Mail\VerfiyEmail;
+use App\Notifications\VideoProcess;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CategoryVideoController;
+use App\Jobs\Otp;
+use App\Jobs\ProcessVideo;
+use App\Notifications\InvoicePaid;
+
 use App\Models\User;
 use Illuminate\Support\Facades\URL;
 
@@ -38,12 +44,15 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/verify/{id}',function(){
-    dd(request()->hasValidSignature());
-    echo 'Verify';
-})-> name('verify');
+Route::get('/email',function(){
 
-Route::get('/generate',function(){
+    Mail::to('hoseinparyab1@gmail.com')->send(new VerfiyEmail());
 
-    echo URL::temporarySignedRoute('verify',now()->addSeconds(20),['id'=>5]);
 });
+Route::get('/notify',function(){
+    $user = User::first();
+    $video = Video::first();
+    $user->notify(new VideoProcess($video));
+});
+
+
