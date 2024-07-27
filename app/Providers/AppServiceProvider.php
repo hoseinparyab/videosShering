@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Mail\VerfiyEmail;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Pagination\Paginator;
 // use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;

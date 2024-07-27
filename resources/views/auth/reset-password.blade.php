@@ -1,39 +1,34 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+@extends('auth-layout')
+@section('content')
+    <div id="log-in" class="site-form log-in-form">
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div id="log-in-head">
+            <h1>تغییر رمز عبور</h1>
+            <div id="logo"><a href="{{ route('index') }}"><img src="img/logo.png" alt=""></a></div>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="form-output">
+            <x-validation-errors></x-validation-errors>
+            <form method="POST" action="{{ route('password.update') }}">
+                @csrf
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                <div class="form-group label-floating">
+                    <label class="control-label">ایمیل</label>
+                    <input name="email" class="form-control" placeholder="" value={{ $request->email }} type="email">
+                </div>
+                <div class="form-group label-floating">
+                    <label class="control-label">رمز عبور</label>
+                    <input name="password" class="form-control" placeholder="" type="password">
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label">تکرار رمز عبور</label>
+                    <input name="password_confirmation" class="form-control" placeholder="" type="password">
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary full-width">تغییر</button>
+            </form>
         </div>
+    </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection
