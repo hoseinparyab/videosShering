@@ -47,7 +47,7 @@
                         <a href="#"><img src="{{ $video->owner_avatar }}" alt=""></a>
                     </div>
                     <div class="chanel-info">
-                        <a class="title" href="#">{{ $video->owner_name }} </a>
+                        <a class="title" href="#">{{ $video->owner_name }}</a>
                         <span class="subscribers">436,414 ویدیو</span>
                     </div>
                     <a href="#" class="subscribe">مشاهده همه ویدیوهای داوود طاهری</a>
@@ -57,35 +57,22 @@
 
                 <!-- Comments -->
                 <div id="comments" class="post-comments">
-                    <h3 class="post-box-title"><span>19</span> نظرات</h3>
+                    <h3 class="post-box-title"><span>{{ $video->comments->count() }}</span> نظرات</h3>
                     <ul class="comments-list">
-                        <li>
-                            <div class="post_author">
-                                <div class="img_in">
-                                    <a href="#"><img src="/demo_img/c1.jpg" alt=""></a>
+                        @foreach ($video->comments as $comment)
+                            <li>
+                                <div class="post_author">
+                                    <div class="img_in">
+                                        <a href="#"><img src="{{ $comment->user->gravatar }}" alt=""></a>
+                                    </div>
+                                    <a href="#" class="author-name">{{ $comment->user->name }}</a>
+                                    <time datetime="2017-03-24T18:18">{{ $comment->created_at_in_human }}</time>
                                 </div>
-                                <a href="#" class="author-name">داود طاهری</a>
-                                <time datetime="2017-03-24T18:18">مرداد 27, 1397 - 11:00</time>
-                            </div>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                            </p>
+                                <p>{{ $comment->body }}</p>
 
 
-                        </li>
-                        <li>
-                            <div class="post_author">
-                                <div class="img_in">
-                                    <a href="#"><img src="/demo_img/c2.jpg" alt=""></a>
-                                </div>
-                                <a href="#" class="author-name">بهمن نجاتی</a>
-                                <time datetime="2017-03-24T18:18">مرداد 27, 1397 - 11:00</time>
-                            </div>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                            </p>
-                        </li>
-
+                            </li>
+                        @endforeach
                     </ul>
 
 
@@ -111,5 +98,4 @@
         </div><!-- // col-md-4 -->
         <!-- // Related Posts -->
     </div>
-
 @endsection
