@@ -33,11 +33,13 @@ class Video extends Model
 
     public function relatedVideos(int $count = 6)
     {
+
         return $this->category->getRandomVideos($count);
     }
 
     public function category()
     {
+
         return $this->belongsTo(Category::class);
     }
 
@@ -60,6 +62,6 @@ class Video extends Model
     }
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->orderBy('created_at','desc');
     }
 }

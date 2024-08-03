@@ -8,5 +8,6 @@ return [
     'verification_email_was_sent' => 'ایمیل تاییدیه ارسال شد.',
     'your_email_was_verified' => 'ایمیل شما با موفقیت تایید شد.',
     'rest_link_was_sent' => 'ایمیل فراموشی رمز ارسال شد',
-    'your_password_was_rest' => 'رمز عبور با موفقیت بروز رسانی شد'
+    'your_password_was_rest' => 'رمز عبور با موفقیت بروز رسانی شد',
+    'comment_sent_successfully' => 'نظر شما با موفقیت ثبت شد'
 ];

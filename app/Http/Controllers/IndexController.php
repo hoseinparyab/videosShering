@@ -9,8 +9,8 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $mostPopularVideos = Video::all()->random(6);
-        $mostViewedVideos = Video::all()->random(6);
+        $mostPopularVideos = Video::with(['user','category'])->get()->random(6);
+        $mostViewedVideos = Video::with(['user','category'])->get()->random(6);
         return view('index', compact('mostPopularVideos', 'mostViewedVideos'));
     }
 }
