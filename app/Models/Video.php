@@ -3,13 +3,14 @@
 namespace App\Models;
 use App\Models\User;
 use App\Models\Comment; // استفاده از فضای نام کامل برای جلوگیری از تداخل
+use App\Models\Traits\Likeable;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    use HasFactory;
+    use HasFactory,Likeable;
     protected $perPage = 10;
 
     protected $fillable = [

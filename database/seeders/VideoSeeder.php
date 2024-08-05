@@ -19,6 +19,6 @@ class VideoSeeder extends Seeder
         ]);
 
 
-        Video::factory()->hasComments(4)->count(15)->create();
+        Video::factory()->hasComments(4)->hasLikes(10)->count(15)->create();
     }
 }
