@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Events\VideoCreated;
 use App\Listeners\ProcessVideo;
 use App\Listeners\SendEmail;
+use App\Models\Like;
+use App\Observers\LikeObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -26,7 +28,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Like::observe(LikeObserver::class);
     }
     public function shouldDiscoverEvents()
 {

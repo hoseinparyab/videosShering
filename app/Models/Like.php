@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
+    protected $fillable =['vote' ,'user_id'];
     use HasFactory;
     public function likeable()
     {

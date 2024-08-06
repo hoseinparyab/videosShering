@@ -47,6 +47,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::bind('likeable_id', function ($value, $route) {
+            $model_name = 'App\\Models\\' . ucfirst($route->parameters['likeable_type']);
+            $routeKey = (new $model_name)->getRouteKeyName();
+            return $model_name::where($routeKey, $route->parameters['likeable_id'])->firstOrFail();
+        });
     }
 
     /**

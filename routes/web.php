@@ -10,12 +10,13 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CategoryVideoController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\DislikeController;
 use App\Http\Middleware\CheckVerifyEmail;
 use App\Jobs\Otp;
 use App\Jobs\ProcessVideo;
 use App\Models\Comment;
 use App\Notifications\InvoicePaid;
-
 use App\Models\User;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\URL;
@@ -41,7 +42,8 @@ Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])->name('vide
 Route::post('/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
 Route::post('/videos/{video}/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/categories/{category:slug}/videos', [CategoryVideoController::class, 'index'])->name('categories.videos.index');
-
+Route::get('{likeable_type}/{likeable_id}/like', [LikeController::class, 'store'])->name('likes.store');
+Route::get('{likeable_type}/{likeable_id}/dislike', [DislikeController::class, 'store'])->name('dislikes.store');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
