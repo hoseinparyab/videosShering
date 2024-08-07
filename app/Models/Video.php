@@ -7,6 +7,7 @@ use App\Models\Traits\Likeable;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Video extends Model
 {
@@ -14,7 +15,7 @@ class Video extends Model
     protected $perPage = 10;
 
     protected $fillable = [
-        'name', 'description', 'length', 'url', 'slug', 'thumbnail', 'category_id'
+        'name', 'description', 'length', 'path', 'slug', 'thumbnail', 'category_id'
     ];
 
     public function getRouteKeyName()
@@ -65,4 +66,9 @@ class Video extends Model
     {
         return $this->hasMany(Comment::class)->orderBy('created_at','desc');
     }
+    public function getVideoUrlAttribute()
+    {
+        return asset('storage/' . $this->path);
+    }
 }
+

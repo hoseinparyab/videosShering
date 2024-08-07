@@ -1,5 +1,5 @@
 @extends('auth-layout')
-@section('class-body','sing-up-page')
+@section('class-body', 'sing-up-page')
 @section('content')
     <div id="log-in" class="site-form log-in-form">
 
@@ -47,5 +47,4 @@
             </form>
         </div>
     </div>
-
 @endsection

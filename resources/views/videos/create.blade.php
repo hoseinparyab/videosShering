@@ -6,7 +6,7 @@
             <!-- upload -->
             <div class="col-md-8">
                 <h1 class="page-title"><span>آپلود</span> ویدیو</h1>
-                <form action="{{ route('videos.store') }}" method="POST">
+                <form action="{{ route('videos.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -26,8 +26,7 @@
                         </div>
                         <div class="col-md-6">
                             <label>آدرس ویدیو</label>
-                            <input type="text" name="url" class="form-control" value="{{ old('url') }}"
-                                placeholder="آدرس ویدیو">
+                            <input type="file" name="file" class="form-control">
                         </div>
                         <div class="col-md-6">
                             <label>تصویر بند‌انگشتی</label>
@@ -45,8 +44,7 @@
                         </div>
                         <div class="col-md-12">
                             <label>توضیحات</label>
-                            <textarea class="form-control" name="description" rows="4"
-                                placeholder="توضیح">{{ old('description') }}</textarea>
+                            <textarea class="form-control" name="description" rows="4" placeholder="توضیح">{{ old('description') }}</textarea>
                         </div>
                         <div class="col-md-2">
                             <button type="submit" id="contact_submit" class="btn btn-dm">ذخیره</button>

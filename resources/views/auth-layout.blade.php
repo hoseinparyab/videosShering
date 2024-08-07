@@ -32,16 +32,14 @@
 </head>
 
 <body class="@yield('class-body')">
-    
-        @if (session('alert'))
-            <div class="alert alert-success">
-                {{ session('alert') }}
-            </div>
-        @endif
-        @yield('content')
+    @if (session('alert'))
+        <div class="alert alert-success">
+            {{ session('alert') }}
+        </div>
+    @endif
 
+    @yield('content')
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
-
