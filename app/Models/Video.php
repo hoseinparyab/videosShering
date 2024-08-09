@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Filters\VideoFilters;
 use App\Models\User;
 use Hekmatinasser\Verta\Verta;
 use App\Models\Traits\Likeable;
@@ -83,35 +84,7 @@ class Video extends Model
     }
     public function scopeFilter(Builder $builder, array $params)
     {
-
-
-        if (isset($params['length']) && $params['length'] == 1) {
-            $builder->where('length', '<', 60);
-        }
-        if (isset($params['length']) && $params['length'] == 2) {
-            $builder->whereBetween('length', [60, 300]);
-        }
-        if (isset($params['length']) && $params['length'] == 3) {
-
-            $builder->where('length', '>', 300);
-        }
-        return $builder;
+       return (new VideoFilters($builder))->apply($params);
     }
-    public function scopeSort(Builder $builder, array $params)
-    {
-        if (isset($params['sortBy']) && $params['sortBy'] == 'like') {
-            $builder -> leftJoin('likes',function ($join){
-                $join->on('likes.likeable_id','=' ,'videos.id')
-                -> where('likes.likeable_type', '=','App\Models\Video')
-                ->where('likes.vote', '=' ,1 );
-            })->groupBy('videos.id')->select(['videos.*',DB::raw('count(likes.id) as count')])->orderBy('count','desc');
 
-        if (isset($params['sortBy']) && $params['sortBy'] == 'length') {
-            $builder->orderBy('length', 'desc');
-        }
-        if (isset($params['sortBy']) && $params['sortBy'] == 'created_at') {
-            $builder->orderBy('created_at', 'desc');
-        }
-    }
-}
 }
