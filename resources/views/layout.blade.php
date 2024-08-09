@@ -50,7 +50,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 hidden-xs hidden-sm">
                     <div class="search-form">
                         <form id="search" action="#" method="post">
-                            <input type="text" placeholder="جستجو ..." />
+                            <input type="text" value="{{ request()->query('q') }}" placeholder="جستجو ..." />
                             <input type="submit" value="Keywords" />
                         </form>
                     </div>
