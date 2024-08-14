@@ -29,6 +29,7 @@ class Video extends Model
         'category_id'
     ];
 
+    protected $hidden = ['category_id'];
     public function getRouteKeyName()
     {
         return 'slug';

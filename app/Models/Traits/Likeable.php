@@ -3,6 +3,7 @@ namespace App\Models\Traits;
 
 use App\Models\Like;
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 
 trait Likeable
 {
@@ -13,16 +14,26 @@ trait Likeable
 
     public function getLikesCountAttribute()
     {
+        $cachekeyName ='likes_count_for'. class_basename($this) .'_'.$this  ->id;
+        Cache::remember($cachekeyName,10,function(){
+
+
         return $this->likes()
             ->where('vote', 1)
             ->count();
+        });
     }
 
     public function getDislikesCountAttribute()
     {
-        return $this->likes()
-            ->where('vote', -1)
-            ->count();
+        $cachekeyName = 'dislikes_count_for' . class_basename($this) . '_' . $this->id;
+        Cache::remember($cachekeyName, 10, function () {
+
+
+            return $this->likes()
+                ->where('vote', -1)
+                ->count();
+        });
     }
     public function likedBy(User $user)
     {

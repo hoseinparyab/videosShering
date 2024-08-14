@@ -13,6 +13,7 @@ use App\Notifications\VideoProcess;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\IndexController;
@@ -47,12 +48,12 @@ Route::get('/categories/{category:slug}/videos', [CategoryVideoController::class
 Route::get('{likeable_type}/{likeable_id}/like', [LikeController::class, 'store'])->name('likes.store');
 Route::get('{likeable_type}/{likeable_id}/dislike', [DislikeController::class, 'store'])->name('dislikes.store');
 
-Route::get('test-gate',function(){
-    $result =Gate::allows('test');
-    if(!$result){
-        abort(403);
-    }
-    dd('hi');
+Route::get('cache',function(){
+  $value= Cache::remember('users',10,function(){
+        sleep(3);
+       return Video::all()->count();
+    });
+    dump($value);
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
